@@ -1,0 +1,168 @@
+%формат
+\documentclass[a4paper,25pt]{book}
+%русс яз и кодировки
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+%поля
+\usepackage[left=3cm,right=3cm,
+    top=2cm,bottom=2cm]{geometry}
+%матеша
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+%заголовок
+\title{Теория алгоритмов
+
+Домашнее задание 1
+
+Часть 1}
+\author{Кондратьева Аэлина 2.9}
+\date{\today}
+
+%документ
+\begin{document}
+\maketitle
+\newpage
+
+\textbf{(И) Вычисление частного и остатка от деления числа, 
+заданного в унарной системесчисления, на два (над алфавитом
+$\Sigma = \{1,\#\}$). Результат должен записыватьсяв виде 
+частное$\#$остаток.
+Ноль должен соответствовать пустому слову.}\\\\
+Задан алфавит $\Sigma = \{1,\#\}$\\\\
+$ \left\{
+\begin{aligned}
+& \#11 \rightarrow 1\# \\
+&  \epsilon \rightarrow \# \\
+\end{aligned}
+\right.$
+\\\\
+Примеры:\\
+1 ) $1 \Rightarrow \#1$\\
+2 ) $11 \Rightarrow \#11 \Rightarrow 1\# $\\
+3 ) $111 \Rightarrow \#111 \Rightarrow 1\#1 $\\
+4 ) $1111 \Rightarrow \#1111 \Rightarrow 1\#11 \Rightarrow 11\# $\\
+5 ) $11111 \Rightarrow \#11111 \Rightarrow 1\#111 \Rightarrow 11\#1 $\\
+6 ) $\epsilon \Rightarrow \# $\\
+
+\textbf{(К) Дублирование всех символов входного слова (над алфавитом
+$\Sigma = \{a, b \}$). Например: $abab \rightarrow aabbaabb$.}\\\\
+Задан алфавит $\Sigma' = \{a, b \} \bigcap \{*\}$\\\\
+$ \left\{
+\begin{aligned}
+& *a \rightarrow aa* \\
+& *b \rightarrow bb* \\
+& * \rightarrow .\epsilon \\
+& \epsilon  \rightarrow  * \\
+\end{aligned}
+\right.$
+\\\\
+Примеры:\\
+1 ) $a \Rightarrow *a \Rightarrow aa* \Rightarrow aa $\\
+2 ) $ab \Rightarrow *ab \Rightarrow aa*b \Rightarrow aabb* \Rightarrow aabb $\\
+3 ) $\epsilon \Rightarrow * \Rightarrow \epsilon $\\
+
+\textbf{(Л)  Перестановка символов входного слова в обратном порядке (над алфавитом $\Sigma = \{a, b \}$).}\\\\
+Задан алфавит $\Sigma' = \{a, b \} \bigcap \{\#, *\}$\\\\
+$ \left\{
+\begin{aligned}
+&*aa \rightarrow a*a\\
+&*ab \rightarrow b*a\\
+&*ba \rightarrow a*b\\
+&*bb \rightarrow b*b\\
+&*a\# \rightarrow \#a\\
+&*b\# \rightarrow \#b\\
+&*\# \rightarrow .\epsilon\\
+&* \rightarrow \#\\
+&\epsilon \rightarrow *\\
+\end{aligned}
+\right.$\\\\
+Примеры:\\
+1 ) $aaba \Rightarrow *aaba \Rightarrow a*aba \Rightarrow ab*aa \Rightarrow  aba*a \Rightarrow aba\#a \Rightarrow *aba\#a \Rightarrow b*aa\#a \Rightarrow  ba*a\#a \Rightarrow$ 
+
+$ba\#aa \Rightarrow *ba\#aa \Rightarrow a*b\#aa \Rightarrow  a\#baa \Rightarrow *a\#baa \Rightarrow \#abaa \Rightarrow *\#abaa \Rightarrow  abaa$\\
+2 ) $aaa \Rightarrow *aaa \Rightarrow a*aa \Rightarrow aa*a \Rightarrow aa\#a \Rightarrow *aa\#a \Rightarrow a*a\#a \Rightarrow a\#aa \Rightarrow *a\#aa \Rightarrow \#aaa \Rightarrow$
+
+$*\#aaa \Rightarrow aaa$\\
+3 ) $\epsilon \Rightarrow * \Rightarrow \# \Rightarrow *\# \Rightarrow\epsilon$\\
+
+
+\textbf{(М) Cортировка символов входного слова (над алфавитом
+$\Sigma = \{a, b, c \}$).}\\\\
+Задан алфавит $\Sigma = \{a, b, c \}$\\\\
+$ \left\{
+\begin{aligned}
+&ba \rightarrow ab\\
+&cb \rightarrow bc\\
+&ca \rightarrow ac\\
+\end{aligned}
+\right.$
+\\\\
+Примеры:\\
+1 ) $bcaacb\Rightarrow bacacb\Rightarrow abcacb\Rightarrow abaccb\Rightarrow aabccb\Rightarrow aabcbc\Rightarrow aabbcc$\\
+2 ) $ccbbaa\Rightarrow cbcbaa\Rightarrow bccbaa\Rightarrow bcbcaa\Rightarrow bbccaa\Rightarrow bbcaca\Rightarrow bbacca\Rightarrow babcca\Rightarrow abbcca\Rightarrow$
+
+$abbcac\Rightarrow abbacc\Rightarrow ababcc\Rightarrow aabbcc$\\
+
+\textbf{(Н) Проверка, является ли входное слово палиндромом  (над алфавитом
+$\Sigma = \{a, b \}$). Если является, то результатом должно быть пустое слово, если не является, то результатом может быть любое непустое слово.}\\\\
+Задан алфавит $\Sigma' = \{a, b \} \bigcap \{*\}$\\\\
+$ \left\{
+\begin{aligned}
+& *aa \rightarrow a*a \\
+& *bb \rightarrow b*b \\
+& *ab \rightarrow b*a \\
+& *ba \rightarrow a*b \\
+& a*a \rightarrow \epsilon \\
+& b*b \rightarrow \epsilon \\
+& a*b \rightarrow .a \\
+& b*a \rightarrow .a \\
+& *b \rightarrow .\epsilon \\
+& *a \rightarrow .\epsilon \\
+& * \rightarrow .a \\
+& \epsilon \rightarrow * \\
+\end{aligned}
+\right.$
+\\\\
+Примеры:\\
+1 ) $\epsilon \Rightarrow *\Rightarrow \epsilon$\\
+2 ) $abba \Rightarrow *abba\Rightarrow b*aba\Rightarrow bb*aa\Rightarrow bba*a\Rightarrow bb\Rightarrow *bb\Rightarrow b*b\Rightarrow\epsilon$\\
+3 ) $ababa\Rightarrow *ababa\Rightarrow b*aaba\Rightarrow ba*aba\Rightarrow bab*aa\Rightarrow baba*a\Rightarrow bab\Rightarrow *bab\Rightarrow a*bb\Rightarrow ab*b\Rightarrow$
+
+$ a\Rightarrow *a\Rightarrow \epsilon$\\
+4 )$aabb\Rightarrow *aabb\Rightarrow a*abb\Rightarrow ab*ab\Rightarrow abb*a\Rightarrow aba$ \\
+5 ) $a\Rightarrow *a\Rightarrow \epsilon$\\
+
+\textbf{(О) Проверка, является ли входное слово именем одного из основных регистров процессора Intel 8088 (AX, BX, CX или DX). Результатом должно быть либое имя регистра, либо пустое слово.}\\\\
+Задан алфавит $\Sigma' = \{A,B,C,D,X \} \bigcap \{\#,|\}$\\
+
+Рассмотрим схему для AX. Для остальных имен схема аналогична, но вместо $\#$ ставится другой элемент, для того что бы при возврате получить исходное имя.\\
+
+Введем обозначение W - любая буква алфавита(A,B,C,D,X).\\
+
+То есть запись вида $ W \rightarrow *$ обозначает следующую партию подстановок:
+$ \left\{
+\begin{aligned}
+& A \rightarrow * \\
+& B \rightarrow * \\
+& C \rightarrow * \\
+& D \rightarrow * \\
+& X \rightarrow * \\
+\end{aligned}
+\right.$\\
+СХЕМА ДЛЯ AX :\\
+$ \left\{
+\begin{aligned}
+& AX \rightarrow \# \\
+& W\#  \rightarrow \epsilon \\
+& \#W \rightarrow \epsilon \\
+& W \rightarrow \epsilon \\
+& \#\# \rightarrow | \\
+& |\# \rightarrow \epsilon \\
+& | \rightarrow \epsilon \\
+& \# \rightarrow .AX \\
+\end{aligned}
+\right.$
+\\\\
+
+
+\end{document}
